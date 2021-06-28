@@ -46,5 +46,6 @@ form.addEventListener('submit', (e) => {
     console.log(e.target[0].value)
     getCity()
     loader.style.display = 'block'
+    forecast.style.display = 'none'
 })
    
