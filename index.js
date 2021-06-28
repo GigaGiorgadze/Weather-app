@@ -6,6 +6,7 @@ const feelingTemp = document.querySelector('#feelingTemp')
 const humidity = document.querySelector('#humidity')
 const wind = document.querySelector('#wind')
 const error = document.querySelector('#error')
+const loader = document.querySelector('.loader')
 let citySearched = ''
 async function getCity(){
     try{
@@ -20,7 +21,9 @@ async function getCity(){
         humidity.innerText = `Humidity: ${cityData.main.humidity}%`
         wind.innerText = `Wind: ${cityData.wind.speed} km/h`
         error.innerText = ''
+        loader.style.display = 'none'
     }catch (err){
+        loader.style.display = 'none'
         if(err.feels_like == undefined){
             cityName.innerText = ''
             temp.innerText = ''
@@ -42,5 +45,6 @@ form.addEventListener('submit', (e) => {
     citySearched = e.target[0].value
     console.log(e.target[0].value)
     getCity()
+    loader.style.display = 'block'
 })
    
